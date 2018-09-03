@@ -4,7 +4,7 @@
   "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
-    "build": "REACT_APP_GITHUB=ea9f2850c32b4d8ff261fb60c07dc1afe63aaf9e react-scripts build",
+    "build": "react-scripts build",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b master -d build"
   },
