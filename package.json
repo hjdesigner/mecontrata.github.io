@@ -18,7 +18,6 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-scripts": "1.1.5",
-    "reworm": "^1.0.4",
     "styled-components": "^3.4.5",
     "styled-is": "^1.1.5",
     "styled-theme": "^0.3.3"

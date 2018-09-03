@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { palette, font, size } from "styled-theme";
+import { size } from "styled-theme";
 
-import { store } from "../../store";
 import PersonComponent from "../PersonComponent";
 
 const PeopleWrapper = styled.div`
@@ -13,14 +12,16 @@ const PeopleWrapper = styled.div`
   max-width: ${size("maxWidth")};
 `;
 
-const PeopleComponent = () => (
-  <PeopleWrapper>
-    {store.get(state =>
-      state.people.map(person => (
-        <PersonComponent key={person.username} data={person} />
-      ))
-    )}
-  </PeopleWrapper>
-);
+const PeopleComponent = props => {
+  const { people } = props;
+  return (
+    <PeopleWrapper>
+      {people.length > 0 &&
+        people.map(person => (
+          <PersonComponent key={person.username} data={person} />
+        ))}
+    </PeopleWrapper>
+  );
+};
 
 export default PeopleComponent;

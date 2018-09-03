@@ -12,7 +12,7 @@ export const getpeople = () => {
     query: gql`
       {
         repository(owner: "frontendbr", name: "me-contrata") {
-          issues(last: 100, states: OPEN) {
+          issues(last: 100, states: OPEN, orderBy: {field: CREATED_AT, direction: DESC}) {
             edges {
               node {
                 id

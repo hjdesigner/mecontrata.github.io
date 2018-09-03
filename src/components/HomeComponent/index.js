@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { palette, font } from "styled-theme";
 
-import { store, setLoading, getPeople } from "../../store";
+import { getPeople } from "../../service";
 import LogoComponent from "../LogoComponent";
 import PeopleComponent from "../PeopleComponent";
 
@@ -25,21 +25,27 @@ const HomeWrapper = styled.div`
 `;
 
 class HomeComponent extends Component {
-  componentDidMount() {
-    getPeople();
+  state = {
+    loading: true,
+    people: []
+  };
+
+  async componentDidMount() {
+    await getPeople()
+      .then(people => this.setState({ people, loading: false }))
+      .catch(error => this.setState({ loading: false }));
   }
 
   render() {
+    const { loading, people } = this.state;
+
     return (
       <HomeWrapper>
-        <h1>Novos front-enders</h1>
-        {store.get(
-          state =>
-            state.loading ? (
-              <LogoComponent height={100} fg="#fff" bg="#000" loading />
-            ) : (
-              <PeopleComponent />
-            )
+        <h1>Front-enders</h1>
+        {loading ? (
+          <LogoComponent height={100} fg="#fff" bg="#000" loading />
+        ) : (
+          <PeopleComponent people={people} />
         )}
       </HomeWrapper>
     );

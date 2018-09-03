@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { palette, font, size } from "styled-theme";
+import { size } from "styled-theme";
 
 import LogoComponent from "../LogoComponent";
 
@@ -36,6 +36,7 @@ const NavComponent = () => (
         <a
           href="https://github.com/mecontrata/mecontrata.github.io"
           target="_blank"
+          rel="noopener noreferrer"
         >
           <FontAwesomeIcon icon={{ prefix: "fab", iconName: "github" }} />
         </a>

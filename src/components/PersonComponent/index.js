@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { palette, font } from "styled-theme";
+import { palette } from "styled-theme";
 
 const PersonWrapper = styled.div`
   display: flex;
@@ -53,7 +53,7 @@ const PersonComponent = props => {
     <PersonWrapper>
       <img src={avatar} alt={name} />
       <h2>{name}</h2>
-      <a href={`https://github.com/${username}`} target="_blank">
+      <a href={`https://github.com/${username}`} target="_blank" rel="noopener noreferrer">
         <FontAwesomeIcon icon={["fab", "github"]} />@{username}
       </a>
       <p>{location}</p>

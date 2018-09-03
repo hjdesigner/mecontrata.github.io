@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { palette, font } from "styled-theme";
+import { font } from "styled-theme";
 
 import HeaderComponent from "../HeaderComponent";
 import FooterComponent from "../FooterComponent";
