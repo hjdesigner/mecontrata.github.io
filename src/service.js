@@ -1,8 +1,8 @@
-import { getpeople } from "./client";
+import { getPeopleService } from "./client";
 
 export const getPeople = () => {
   return new Promise((resolve, reject) => {
-    getpeople()
+    getPeopleService()
       .then(response => {
         const rawIssues = response.data.repository.issues.edges;
         const rawPeople = rawIssues.map(issue => issue.node);

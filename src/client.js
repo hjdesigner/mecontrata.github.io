@@ -1,18 +1,36 @@
 import ApolloClient, { gql } from "apollo-boost";
 
-export const client = new ApolloClient({
-  uri: "https://api.github.com/graphql",
-  headers: {
-    Authorization: `bearer ${process.env.REACT_APP_GITHUB}`
-  }
-});
+const getToken = async () => {
+  const tokens = await fetch(
+    "http://localhost:5000/server-mecontrata/us-central1/getApiKeys"
+  )
+    .then(response => response.json())
+    .catch(error => console.error(error));
+  return tokens.github;
+};
 
-export const getpeople = () => {
+const prepareClient = async () => {
+  const token = await getToken();
+  return new ApolloClient({
+    uri: "https://api.github.com/graphql",
+    headers: {
+      Authorization: `bearer ${token}`
+    }
+  });
+};
+
+export const getPeopleService = async () => {
+  const client = await prepareClient();
+
   return client.query({
     query: gql`
       {
         repository(owner: "frontendbr", name: "me-contrata") {
-          issues(last: 100, states: OPEN, orderBy: {field: CREATED_AT, direction: DESC}) {
+          issues(
+            last: 100
+            states: OPEN
+            orderBy: { field: CREATED_AT, direction: DESC }
+          ) {
             edges {
               node {
                 id

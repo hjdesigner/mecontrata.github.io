@@ -1,4 +1,5 @@
 import React from "react";
+import uuid from "uuid/v4";
 import styled from "styled-components";
 import { palette, font, size } from "styled-theme";
 
@@ -37,9 +38,7 @@ const PeopleComponent = props => {
     <PeopleWrapper>
       {people.length > 0 ? (
         <h1>Front-enders</h1> &&
-        people.map(person => (
-          <PersonComponent key={person.username} data={person} />
-        ))
+        people.map(person => <PersonComponent key={uuid()} data={person} />)
       ) : (
         <ErrorWrapper>:(</ErrorWrapper>
       )}
