@@ -2,7 +2,7 @@ import ApolloClient, { gql } from "apollo-boost";
 
 const getToken = async () => {
   const tokens = await fetch(
-    "http://localhost:5000/server-mecontrata/us-central1/getApiKeys"
+    "https://us-central1-server-mecontrata.cloudfunctions.net/getApiKeys"
   )
     .then(response => response.json())
     .catch(error => console.error(error));
